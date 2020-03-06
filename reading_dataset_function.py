@@ -7,7 +7,6 @@ Created on Fri Mar  6 15:48:22 2020
 """
 
 import os
-from os.path import join
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -62,10 +61,10 @@ def show_sequence(images):
         pl.pause(.0001)
     return images;
     
-folder_path = "AE4317_2019_datasets/cyberzoo_poles/20190121-135009/"
+# folder_path = "AE4317_2019_datasets/cyberzoo_poles/20190121-135009/"
 
-images= reading_dataset(folder_path)
+# images= reading_dataset(folder_path)
 
-images= RGB2BGR(images)
+# images= RGB2BGR(images)
 
-show_sequence(images)
+# show_sequence(images)

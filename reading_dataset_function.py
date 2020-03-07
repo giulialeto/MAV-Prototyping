@@ -55,11 +55,18 @@ def RGB2BGR(images):
     return images;
 
 def show_sequence(images):
+    """
+    INPUTs
+    images: array containing the RGB coordinates of a sequence of images
+    
+    OUTPUTs
+    plots showing the sequence with high frame rate
+    """
     #Show sequence of images
     for image in images:
         plt.imshow(image)
-        pl.pause(.0001)
-    return images;
+        pl.pause(.00001)
+    return;
     
 # folder_path = "AE4317_2019_datasets/cyberzoo_poles/20190121-135009/"
 

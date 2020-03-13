@@ -29,13 +29,18 @@ def reading_dataset(folder_path):
     
     #Inizialize empty array for images
     images = np.empty(len( files ), dtype=object)
+
     
     #Load all images in the correct sequence
     i= 0
     for image in sorted(os.listdir(folder_path)):
         images[i] = cv2.imread( folder_path+image )
         i= i+1
-    
+        
+    # plt.imshow(images[130])
+    # pl.pause(.00001)
+    # plt.imshow(images[131])
+    # pl.pause(.00001)
     return images;
 
 def RGB2BGR(images):

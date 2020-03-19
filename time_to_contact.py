@@ -14,6 +14,7 @@ import matplotlib.pyplot as plt
 import pylab as pl
 import time
 import color_detection_function
+import glob
 
 #folder_path = "AE4317_2019_datasets/sim_poles/20190121-160844/"
 folder_path = "AE4317_2019_datasets/sim_poles_panels/20190121-161422/"
@@ -24,18 +25,19 @@ folder_path = "AE4317_2019_datasets/sim_poles_panels/20190121-161422/"
 #Find out how many figures are in the sequence
 path, dirs, files = next(os.walk( folder_path ))
 
-#Inizialize empty array for images
+# #Inizialize empty array for images
 images = np.empty(len( files ), dtype=object)
 
 #Load all images in the correct sequence and convert colors
 i= 0
 for image in sorted(os.listdir(folder_path)):
-    images[i] = cv2.imread( folder_path+image )
-    #images[i] = cv2.cvtColor(images[i], cv2.COLOR_RGB2BGR)
-    images[i] = cv2.cvtColor(images[i], cv2.COLOR_RGB2YUV)
     color_detection_function.filter_color(folder_path+image,  y_low = 50, y_high = 200, \
-                      u_low = 0, u_high = 120, v_low = 0, v_high = 135, resize_factor=1)
+                      u_low = 0, u_high = 120, v_low = 0, v_high = 130, resize_factor=1)
     i= i+1
+# image = ' 15610000.jpg' #glob.glob('*.jpg')''
+
+# color_detection_function.filter_color(folder_path+image,  y_low = 50, y_high = 200, \
+#                       u_low = 0, u_high = 120, v_low = 0, v_high = 130, resize_factor=1)
 
 ##Show sequence of images
 #for i in range(0, len(files))

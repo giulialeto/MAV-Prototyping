@@ -15,6 +15,9 @@ def filter_color(image_name = 'DelFly_tulip.jpg', y_low = 50, y_high = 200, \
     im = cv2.imread(image_name);
     im = cv2.resize(im, (int(im.shape[1]/resize_factor), int(im.shape[0]/resize_factor)));
     YUV = cv2.cvtColor(im, cv2.COLOR_BGR2YUV);
+    # plt.figure()
+    # plt.imshow(YUV);
+    # plt.title('YUV image');
     Filtered = np.zeros([YUV.shape[0], YUV.shape[1]]);
     for y in range(YUV.shape[0]):
         for x in range(YUV.shape[1]):

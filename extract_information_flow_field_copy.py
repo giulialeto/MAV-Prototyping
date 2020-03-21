@@ -15,7 +15,7 @@ import re
 import time
 import sys
 
-def determine_optical_flow(prev_bgr, bgr, graphics= True):
+def determine_optical_flow(prev_bgr, bgr, graphics= False):
     
     # *******************************************************************
     # TODO: In the !second! lecture on optical flow, study this function
@@ -28,10 +28,10 @@ def determine_optical_flow(prev_bgr, bgr, graphics= True):
     gray = cv2.cvtColor(bgr, cv2.COLOR_BGR2GRAY);
     
     # params for ShiTomasi corner detection
-    feature_params = dict( maxCorners = 100,
-                           qualityLevel = 0.3,
-                           minDistance = 7,
-                           blockSize = 7 )
+    feature_params = dict( maxCorners = 250,#200
+                           qualityLevel = 0.3,#0.3
+                           minDistance = 3,#5
+                           blockSize = 3 )#5
     
     # Parameters for lucas kanade optical flow
     lk_params = dict( winSize  = (15,15),
@@ -166,21 +166,29 @@ def show_flow(image_name_1, image_name_2,images):
     
     prev_bgr = images[image_name_1];
     
-    plt.figure();
-    plt.imshow(prev_bgr);
-    plt.title('First image, nr' + str(image_name_1));
+#    plt.figure();
+#    plt.imshow(prev_bgr);
+#    plt.title('First image, nr' + str(image_name_1));
     
 
     bgr = images[image_name_2];
     
-    plt.figure();
-    plt.imshow(bgr);
-    plt.title('Second image, nr' + str(image_name_2));
+#    plt.figure();
+#    plt.imshow(bgr);
+#    plt.title('Second image, nr' + str(image_name_2));
     
     # print('name1: {}\nname2: {}'.format(image_name_1, image_name_2));
-    points_old, points_new, flow_vectors = determine_optical_flow(prev_bgr, bgr, graphics=True);
+    points_old, points_new, flow_vectors = determine_optical_flow(prev_bgr, bgr, graphics=False);
     return points_old, points_new, flow_vectors;
-    
+
+def time_to_contact(pu, pv):
+    divergence = (pu[0] + pv[1]) / 2.0;
+    small_threshold = 1E-5;   
+    if(abs(divergence) > small_threshold):
+        toc = 1 / divergence
+    else:
+        toc = 0
+    return toc
 
 #def extract_flow_information(image_dir_name = './image_sequence_pure_ver1/', image_type = 'jpg', verbose=True, graphics = True, flow_graphics = False):
 #    
@@ -286,7 +294,7 @@ def show_flow(image_name_1, image_name_2,images):
 #        plt.xlabel('Image')
 #        plt.ylabel('Motion U/Z')        
 
-if __name__ == '__main__':        
-    # extract_flow_information(image_dir_name = './images_landing/', image_type = 'png', verbose=True, graphics = True, flow_graphics = True);
-    # Change flow_gaphics to True in order to see images and optical flow:
-    extract_flow_information(flow_graphics=False)
+#if __name__ == '__main__':        
+#    # extract_flow_information(image_dir_name = './images_landing/', image_type = 'png', verbose=True, graphics = True, flow_graphics = True);
+#    # Change flow_gaphics to True in order to see images and optical flow:
+#    extract_flow_information(flow_graphics=False)

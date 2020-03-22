@@ -45,7 +45,7 @@ for fname in images:
 ret, mtx, dist, rvecs, tvecs = cv2.calibrateCamera(objpoints, imgpoints, gray.shape[::-1],None,None)
 img = cv2.imread('999999999.jpg')
 h,  w = img.shape[:2]
-newcameramtx, roi=cv2.getOptimalNewCameraMatrix(mtx,dist,(w,h),1,(w,h))
+newcameramtx, roi = cv2.getOptimalNewCameraMatrix(mtx,dist,(w,h),1,(w,h))
 
 # undistort
 dst = cv2.undistort(img, mtx, dist, None, newcameramtx)

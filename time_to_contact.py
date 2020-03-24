@@ -17,7 +17,7 @@ import color_detection_function
 import glob
 
 #folder_path = "AE4317_2019_datasets/sim_poles/20190121-160844/"
-folder_path = "AE4317_2019_datasets/sim_poles_panels/20190121-161422/"
+folder_path = "20200318-182311/"
 #folder_path = "AE4317_2019_datasets/sim_poles_panels_mats/20190121-161931/"
 #folder_path = "20200310-142119/"
 
